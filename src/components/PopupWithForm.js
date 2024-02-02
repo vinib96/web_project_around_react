@@ -1,9 +1,15 @@
-function PopupWithForm(props) {
+function PopupWithForm({ onClose, isOpen, title, name, children, buttonName }) {
   return (
     <>
-      <section className="popup  popup_type_${props.name}">
+      <section
+        className={`popup popup_type_${name}  ${isOpen ? "popup__opened" : ""}`}
+      >
         <div className="popup__container">
-          <button type="button" className="popup__close-button">
+          <button
+            type="button"
+            className="popup__close-button"
+            onClick={onClose}
+          >
             <img
               src={require("../styles/images/Close__Icon.png")}
               alt="Botão
@@ -11,14 +17,16 @@ function PopupWithForm(props) {
             />
           </button>
           <div className="popup__form-container">
-            <h3 className="popup__title">{props.title}</h3>
+            <h3 className="popup__title">{title}</h3>
             <form className="popup__form" noValidate>
               <fieldset className="popup__formset">
-                {props.children}
+                {children}
                 <button
                   type="submit"
                   className="popup__submit-button popup__button"
-                ></button>
+                >
+                  {buttonName}
+                </button>
               </fieldset>
             </form>
           </div>
