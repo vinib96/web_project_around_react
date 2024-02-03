@@ -5,9 +5,11 @@ import api from "../utils/api";
 import Card from "./Card";
 
 function Main({
-  onEditProfileClick = { onEditProfileClick },
-  onEditAvatarClick = { onEditAvatarClick },
-  onAddPlaceClick = { onAddPlaceClick },
+  onClick,
+  onEditProfileClick,
+  onEditAvatarClick,
+  onAddPlaceClick,
+  onCardClick,
 }) {
   const [userName, setUserName] = useState("");
   const [userDescription, setUserDescription] = useState("");
@@ -38,7 +40,7 @@ function Main({
 
   return (
     <>
-      <section className="profile">
+      <section className="profile" onClick={onClick}>
         <div className="profile__container">
           <button onClick={onEditAvatarClick} className="profile__pic-button">
             <img
@@ -80,7 +82,7 @@ function Main({
         <template id="cards" />
         <ul className="elements__container">
           {cardsApp.map((card) => (
-            <Card cardData={card} key={card._id} />
+            <Card cardData={card} key={card._id} onCardClick={onCardClick} />
           ))}
         </ul>
       </section>

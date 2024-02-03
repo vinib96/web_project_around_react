@@ -1,5 +1,9 @@
-function Card({ cardData }) {
-  const { link, name } = cardData;
+function Card({ cardData, onCardClick }) {
+  const { link, name, likes } = cardData;
+
+  const handleLike = () => {
+    onCardClick(cardData);
+  };
 
   return (
     <>
@@ -9,7 +13,12 @@ function Card({ cardData }) {
             <img src={require("../styles/images/Trash.png")} alt="Lixo" />
           </button>
           <figure className="elements__figure">
-            <img src={link} alt={name} className="elements__card-image" />
+            <img
+              src={link}
+              alt={name}
+              className="elements__card-image"
+              onClick={handleLike}
+            />
           </figure>
         </div>
         <div className="elements__content">
@@ -20,7 +29,7 @@ function Card({ cardData }) {
               className="elements__like-button"
               name="like"
             ></button>
-            <p className="elements__like-counter"></p>
+            <p className="elements__like-counter">{likes.length}</p>
           </div>
         </div>
       </li>
