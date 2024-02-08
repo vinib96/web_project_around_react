@@ -2,7 +2,7 @@ function ImagePopup({ card, onClose }) {
   return (
     <>
       <section
-        className={`popup popup_full ${card.name ? "popup__opened" : ""}`}
+        className={`popup popup_full ${card.link ? "popup__opened" : ""}`}
       >
         <div className="popup__container popup__container_image" id="image">
           <button
