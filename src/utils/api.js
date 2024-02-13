@@ -98,6 +98,13 @@ class Api {
     });
   }
 
+  changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return this.removeLikes(cardId);
+    }
+    return this.addLikes(cardId);
+  }
+
   removeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",

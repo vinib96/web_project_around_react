@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
+import { UserContext } from "../contexts/CurrentUserContext";
 import api from "../utils/api";
 import Card from "./Card";
 
@@ -10,33 +11,29 @@ function Main({
   onEditAvatarClick,
   onAddPlaceClick,
   onCardClick,
+  onCardLike,
+  onCardDelete,
 }) {
-  const [userName, setUserName] = useState("");
-  const [userDescription, setUserDescription] = useState("");
-  const [userAvatar, setUserAvatar] = useState("");
   const [cardsApp, setCards] = useState([]);
-
-  useEffect(() => {
-    api.getUserInfo().then((name) => {
-      setUserName(name);
-    });
-  }, []);
-
-  useEffect(() => {
-    api.getUserInfo().then((about) => {
-      setUserDescription(about);
-    });
-  }, []);
-
-  useEffect(() => {
-    api.getUserInfo().then((avatar) => {
-      setUserAvatar(avatar);
-    });
-  }, []);
+  const userData = useContext(UserContext);
 
   useEffect(() => {
     api.getInitialCards().then((apiCards) => setCards(apiCards));
   }, []);
+
+  function handleCardLike(card) {
+    const isLiked = card.likes.some((i) => i._id === userData._id);
+
+    api.changeLikeCardStatus(card._id, isLiked).then((newCard) => {
+      setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
+    });
+  }
+
+  function handleCardDelete(cardId) {
+    api.removeCard(cardId).then(() => {
+      setCards(cardsApp.filter((card) => card._id !== cardId));
+    });
+  }
 
   return (
     <>
@@ -44,14 +41,14 @@ function Main({
         <div className="profile__container">
           <button onClick={onEditAvatarClick} className="profile__pic-button">
             <img
-              src={userAvatar.avatar}
+              src={userData.avatar}
               alt="Imagem de perfil do usuário"
               className="profile__picture"
             />
           </button>
           <div className="profile__input">
             <div className="profile__text-button">
-              <h1 className="profile__name block">{userName.name}</h1>
+              <h1 className="profile__name block">{userData.name}</h1>
               <button
                 type="button"
                 onClick={onEditProfileClick}
@@ -63,7 +60,7 @@ function Main({
                 />
               </button>
             </div>
-            <h2 className="profile__about block">{userDescription.about}</h2>
+            <h2 className="profile__about block">{userData.about}</h2>
           </div>
         </div>
         <button
@@ -82,7 +79,13 @@ function Main({
         <template id="cards" />
         <ul className="elements__container">
           {cardsApp.map((card) => (
-            <Card cardData={card} key={card._id} onCardClick={onCardClick} />
+            <Card
+              cardData={card}
+              key={card._id}
+              onCardClick={onCardClick}
+              onCardLike={handleCardLike}
+              onCardDelete={handleCardDelete}
+            />
           ))}
         </ul>
       </section>
