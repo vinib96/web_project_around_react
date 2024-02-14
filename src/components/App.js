@@ -3,6 +3,7 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
+import EditProfilePopup from "./EditProfilePopup";
 import ImagePopup from "./ImagePopup";
 import api from "../utils/api";
 import { UserContext } from "../contexts/CurrentUserContext";
@@ -35,6 +36,13 @@ function App() {
     setSelectedCard(card);
   }
 
+  function handleUpdateUser({ name, about }) {
+    api.editUserInfo(name, about).then((name, about, avatar) => {
+      setCurrentUser(name, about, avatar);
+      closeAllPopups();
+    });
+  }
+
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
@@ -53,43 +61,11 @@ function App() {
             onAddPlaceClick={handleAddPlaceClick}
             onCardClick={handleCardClick}
           ></Main>
-          <PopupWithForm
-            name={"profile"}
-            title={"Editar Perfil"}
-            buttonName={"Enviar"}
+          <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
-          >
-            {" "}
-            <label>
-              <input
-                type="text"
-                name="name"
-                id="name-input"
-                className="popup__input popup__input_type_name"
-                placeholder="Nome"
-                minLength="2"
-                maxLength="40"
-                required
-              />
-
-              <span className="name-input-error"></span>
-            </label>
-            <label>
-              <input
-                type="text"
-                name="about"
-                id="about-input"
-                className="popup__input popup__input_type_about"
-                placeholder="Sobre mim"
-                minLength="2"
-                maxLength="200"
-                required
-              />
-
-              <span className="about-input-error"></span>
-            </label>
-          </PopupWithForm>
+            onUpdateUser={handleUpdateUser}
+          />
           <PopupWithForm
             name={"add-cards"}
             title={"Novo local"}

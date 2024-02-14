@@ -2,7 +2,7 @@ function Footer() {
   return (
     <>
       {" "}
-      <footer className="footer">© 2023. Vinícíus Bueno</footer>
+      <footer className="footer">© 2024. Vinícíus Bueno</footer>
     </>
   );
 }
