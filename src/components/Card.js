@@ -1,7 +1,13 @@
 import { useContext } from "react";
 import { UserContext } from "../contexts/CurrentUserContext";
 
-function Card({ cardData, onCardClick, onCardLike, onCardDelete }) {
+function Card({
+  cardData,
+  onCardClick,
+  onCardLike,
+  onCardDelete,
+  onConfirmClick,
+}) {
   const { link, name, likes, _id } = cardData;
 
   const currentUser = useContext(UserContext);
@@ -28,7 +34,8 @@ function Card({ cardData, onCardClick, onCardLike, onCardDelete }) {
           <button
             type="button"
             className={cardDeleteButtonClassName}
-            onClick={() => onCardDelete(_id)}
+            // onClick={() => onCardDelete(_id)}
+            onClick={onConfirmClick}
           >
             <img src={require("../styles/images/Trash.png")} alt="Lixo" />
           </button>

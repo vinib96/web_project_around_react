@@ -1,4 +1,12 @@
-function PopupWithForm({ onClose, isOpen, title, name, children, buttonName }) {
+function PopupWithForm({
+  onClose,
+  isOpen,
+  title,
+  name,
+  children,
+  buttonName,
+  onSubmit,
+}) {
   return (
     <>
       <section
@@ -18,7 +26,7 @@ function PopupWithForm({ onClose, isOpen, title, name, children, buttonName }) {
           </button>
           <div className="popup__form-container">
             <h3 className="popup__title">{title}</h3>
-            <form className="popup__form" noValidate>
+            <form className="popup__form" noValidate onSubmit={onSubmit}>
               <fieldset className="popup__formset">
                 {children}
                 <button
