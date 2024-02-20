@@ -3,17 +3,20 @@ import { UserContext } from "../contexts/CurrentUserContext";
 import PopupWithForm from "./PopupWithForm";
 import Card from "./Card";
 
-function ConfirmDeletePopup({ isOpen, onClose, onCardDelete, card }) {
-  console.log(card);
+function ConfirmDeletePopup({ cardId, onClose, onCardDelete, card }) {
+  function handleSubmit(e) {
+    e.preventDefault();
+    onCardDelete(cardId);
+  }
   return (
     <>
       <PopupWithForm
         name={"erase"}
         title={"Tem certeza?"}
         buttonName={"Sim"}
-        isOpen={isOpen}
+        isOpen={cardId}
         onClose={onClose}
-        onClick={() => onCardDelete(card)}
+        onSubmit={handleSubmit}
       ></PopupWithForm>
     </>
   );

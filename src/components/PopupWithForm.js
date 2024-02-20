@@ -1,3 +1,4 @@
+import { useState } from "react";
 function PopupWithForm({
   onClose,
   isOpen,
@@ -7,6 +8,7 @@ function PopupWithForm({
   buttonName,
   onSubmit,
 }) {
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <>
       <section

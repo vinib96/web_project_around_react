@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -17,8 +17,9 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-  const [isConfirmDeletePopupOpen, setConfirmDeletePopupOpen] = useState(false);
+  const [selectedCardToDelete, setSelectedCardToDelete] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+
   const [currentUser, setCurrentUser] = useState({
     name: "",
     about: "",
@@ -28,6 +29,23 @@ function App() {
   useEffect(() => {
     api.getUserInfo().then(setCurrentUser);
   }, []);
+
+  const EnableEsc = () => {
+    const escFunction = useCallback((event) => {
+      if (event.key === "Escape") {
+        closeAllPopups();
+      }
+    }, []);
+
+    useEffect(() => {
+      document.addEventListener("keydown", escFunction, false);
+
+      return () => {
+        document.removeEventListener("keydown", escFunction, false);
+      };
+    }, [escFunction]);
+  };
+  EnableEsc();
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -39,8 +57,8 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
-  function handleConfirmDeleteClick() {
-    setConfirmDeletePopupOpen(true);
+  function handleConfirmDeleteClick(cardId) {
+    setSelectedCardToDelete(cardId);
   }
 
   function handleCardClick(card) {
@@ -71,6 +89,7 @@ function App() {
   function handleCardDelete(cardId) {
     api.removeCard(cardId).then(() => {
       setCards(cardsApp.filter((card) => card._id !== cardId));
+      setSelectedCardToDelete("");
     });
   }
 
@@ -85,7 +104,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
-    setConfirmDeletePopupOpen(false);
+    setSelectedCardToDelete("");
     setSelectedCard({});
   }
 
@@ -120,10 +139,9 @@ function App() {
             onUpdateAvatar={handleUpdateAvatar}
           />
           <ConfirmDeletePopup
-            isOpen={isConfirmDeletePopupOpen}
+            cardId={selectedCardToDelete}
             onClose={closeAllPopups}
             onCardDelete={handleCardDelete}
-            card={cardsApp.map((card) => card._id)}
           />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
 

@@ -35,7 +35,7 @@ function Card({
             type="button"
             className={cardDeleteButtonClassName}
             // onClick={() => onCardDelete(_id)}
-            onClick={onConfirmClick}
+            onClick={() => onConfirmClick(_id)}
           >
             <img src={require("../styles/images/Trash.png")} alt="Lixo" />
           </button>
