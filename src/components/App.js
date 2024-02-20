@@ -11,7 +11,6 @@ import ImagePopup from "./ImagePopup";
 import api from "../utils/api";
 
 import { UserContext } from "../contexts/CurrentUserContext";
-import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
