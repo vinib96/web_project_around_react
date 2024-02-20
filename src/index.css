@@ -1,12 +1,12 @@
 @import url(./styles/vendor/normalize.css);
 @import url(./styles/fonts/font.css);
-@import url(./styles/blocks/page.css);
-@import url(./styles/blocks/logo.css);
-@import url(./styles/blocks/header.css);
-@import url(./styles/blocks/profile.css);
-@import url(./styles/blocks/popup.css);
-@import url(./styles/blocks/elements.css);
-@import url(./styles/blocks/footer.css);
+@import url(./blocks/page.css);
+@import url(./blocks/logo.css);
+@import url(./blocks/header.css);
+@import url(./blocks/profile.css);
+@import url(./blocks/popup.css);
+@import url(./blocks/elements.css);
+@import url(./blocks/footer.css);
 
 html,
 body {

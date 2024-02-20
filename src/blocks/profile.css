@@ -9,7 +9,7 @@
 
 .profile__pic-button {
   padding: 0;
-  background: url(../images/img__edit.png) center no-repeat;
+  background: url(../styles/images/img__edit.png) center no-repeat;
   border: none;
   cursor: pointer;
   transition: 0.2s ease-in;

@@ -80,7 +80,7 @@
   border: none;
   outline: none;
   cursor: pointer;
-  background: url(../images/like__button.svg) center no-repeat;
+  background: url(../styles/images/like__button.svg) center no-repeat;
   width: 21px;
   height: 19px;
   background-size: 100%;
@@ -99,7 +99,7 @@
   width: 21px;
   height: 19px;
   background-size: 100%;
-  background: url(../images/like__button__hover.png) center no-repeat;
+  background: url(../styles/images/like__button__hover.png) center no-repeat;
 }
 
 .elements__like-counter {
