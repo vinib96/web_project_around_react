@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState, useRef } from "react";
-import { UserContext } from "../contexts/CurrentUserContext";
-import Card from "./Card";
+import { useRef } from "react";
+
 import PopupWithForm from "./PopupWithForm";
 function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit }) {
   const name = useRef();
@@ -31,6 +30,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit }) {
             placeholder="Título"
             minLength={2}
             maxLength={30}
+            required
           />
           <span className="title-input-error" />
         </label>

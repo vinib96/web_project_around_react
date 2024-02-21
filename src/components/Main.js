@@ -1,8 +1,7 @@
-import { useState, useEffect, useContext } from "react";
-import PopupWithForm from "./PopupWithForm";
-import ImagePopup from "./ImagePopup";
+import { useContext } from "react";
+
 import { UserContext } from "../contexts/CurrentUserContext";
-import api from "../utils/api";
+
 import Card from "./Card";
 
 function Main({

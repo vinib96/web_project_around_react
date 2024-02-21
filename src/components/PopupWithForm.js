@@ -1,4 +1,3 @@
-import { useState } from "react";
 function PopupWithForm({
   onClose,
   isOpen,
@@ -8,7 +7,6 @@ function PopupWithForm({
   buttonName,
   onSubmit,
 }) {
-  const [isLoading, setIsLoading] = useState(false);
   return (
     <>
       <section
@@ -28,7 +26,7 @@ function PopupWithForm({
           </button>
           <div className="popup__form-container">
             <h3 className="popup__title">{title}</h3>
-            <form className="popup__form" noValidate onSubmit={onSubmit}>
+            <form className="popup__form" onSubmit={onSubmit}>
               <fieldset className="popup__formset">
                 {children}
                 <button
