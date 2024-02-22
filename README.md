@@ -29,4 +29,4 @@ O site pode ser acessado através do link: https://vinib96.github.io/web_project
 
 
 
- <img src="https://miro.medium.com/v2/resize:fit:679/1*i8-u-V8LTTbQwTeUwLI_BQ.gif" />
+ <img src="https://nexax.in/wp-content/uploads/2020/11/giphy.gif" />
