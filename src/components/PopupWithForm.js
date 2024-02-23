@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 function PopupWithForm({
   onClose,
   isOpen,
@@ -7,6 +8,13 @@ function PopupWithForm({
   buttonName,
   onSubmit,
 }) {
+  useEffect(() => {
+    document.addEventListener("mousedown", (e) => {
+      if (e.target.classList.contains(`popup`)) {
+        onClose();
+      }
+    });
+  }, []);
   return (
     <>
       <section
