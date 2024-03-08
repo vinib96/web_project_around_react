@@ -25,7 +25,7 @@ A responsividade foi criada com as técnicas aprendidas na Sprints anteriores, c
 
 ## Demonstração
 
-O site pode ser acessado através do link: https://vinib96.github.io/web_project_around/
+O site pode ser acessado através do link: https://vinib96.github.io/web_project_around_react/
 
 
 <div align="center"><img src="https://nexax.in/wp-content/uploads/2020/11/giphy.gif" /></div>
