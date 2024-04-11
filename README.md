@@ -7,7 +7,7 @@ O projeto "Ao redor dos EUA" (referentes as Sprints 11 e 12) do curso de "Desenv
 
 - O aplicativo foi estruturado conforme a [documentação do React](https://pt-br.legacy.reactjs.org/docs/getting-started.html).
 - Os cartões iniciais da página foram obtidos da Api correspondente;
-- Os botões de abertura e fechamento dos popups, sbumit e like dos cartões utilizaram Estados e Contextos.
+- Os botões de abertura e fechamento dos popups, submit e like dos cartões utilizaram Estados e Contextos.
 - O fechamento dos popups com a tecla ESC ou clicando fora deles foram refatorados;
 - Uso de ref para obter acesso direto ao elemento de entrada DOM e seu valor na edição do Avatar;
 - As APIs foram estruturadas em Classe.
