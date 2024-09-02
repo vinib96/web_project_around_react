@@ -1,7 +1,7 @@
 
 # PROJETO: "AO REDOR DOS EUA" - REACT
 
-O projeto "Ao redor dos EUA" (referentes as Sprints 11 e 12) do curso de "Desenvolvedor Web" da TripleTen consistiu na criação de uma página web onde os usuários podem adicionar, remover e curtir fotos, bem como editar informações e o avatar de seu perfil. O objetivo é utilizarmos a biblioteca React para criação do aplicativo, refatorar o código do [projeto anterior](https://github.com/vinib96/web_project_around) e adicionar melhorias ao design.
+O projeto "Ao Redor dos EUA" (Sprints 11 e 12) do curso de "Desenvolvedor Web" da TripleTen teve como objetivo desenvolver uma página web onde os usuários pudessem adicionar, remover e curtir fotos, além de editar informações e o avatar de seus perfis. Para isso, utilizei a biblioteca React, refatorei o código de um [projeto anterior](https://github.com/vinib96/web_project_around) e implementei melhorias no design, aprimorando a interface e a experiência do usuário. Como resultado, o projeto apresentou um código mais limpo e uma interface mais atraente e funcional.
 
 ## Funcionalidades
 
